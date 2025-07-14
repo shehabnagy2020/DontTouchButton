@@ -1,0 +1,71 @@
+:root {
+  --duration: 2000ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cursorHandle1,
+  .cursorHandle2 {
+    filter: invert(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(15rem, 0);
+  }
+
+  50% {
+    transform: translate(15rem, -20px);
+  }
+}
+
+.hideCursorDeep,
+.hideCursorDeep * {
+  cursor: none !important;
+}
+
+.dontContainer {
+  position: relative;
+  cursor: not-allowed;
+}
+
+.dontContainer img {
+  width: 25px;
+  height: 25px;
+}
+
+.customCursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: transform var(--duration) ease;
+  opacity: 0;
+}
+
+.cursorHandle1,
+.cursorHandle2 {
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  pointer-events: none;
+  pointer-events: none;
+  transition: transform var(--duration) ease;
+  opacity: 0;
+}
+
+.hideCursorDeep > .customCursor,
+.hideCursorDeep > .cursorHandle1 {
+  opacity: 1;
+  transform: translateX(15rem);
+}
+
+.cursorHandle2Move > .cursorHandle2 {
+  opacity: 1;
+  animation: bounce calc(var(--duration) / 3) infinite;
+}
+
+.cursorHandle2Move > .cursorHandle1 {
+  opacity: 0;
+}

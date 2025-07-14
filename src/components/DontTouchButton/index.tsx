@@ -44,6 +44,10 @@ const DontTouchButton: React.FC<DontTouchButtonProps> = ({ children }) => {
       ref={containerRef}
       className={styles.dontContainer}
       onMouseEnter={handleMouseEnter}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }}
     >
       {children}
       <div className={styles.customCursor}>
